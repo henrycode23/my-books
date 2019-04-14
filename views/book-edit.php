@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="alert alert-info">
-      <h4>Book Add Page</h4>
+      <h4>Book Update Page</h4>
     </div>
     <div class="panel panel-primary">
-      <div class="panel-heading">Add New Book</div>
+      <div class="panel-heading">Update Book</div>
       <div class="panel-body">
         <form class="form-horizontal" action="javascript:void(0)" id="frmAddBook">
           <div class="form-group">
@@ -33,7 +33,7 @@
           </div>
           <div class="form-group"> 
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default">Add Book</button>
+              <button type="submit" class="btn btn-default">Update</button>
             </div>
           </div>
         </form>

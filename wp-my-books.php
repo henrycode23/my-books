@@ -48,6 +48,7 @@ function my_book_plugin_menus(){
   add_menu_page( 'My Book', 'My Book', 'manage_options', 'book-list', 'my_book_list', 'dashicons-book-alt', 30 );
   add_submenu_page( 'book-list', 'Book List', 'Book List', 'manage_options', 'book-list', 'my_book_list' );
   add_submenu_page( 'book-list', 'Add New', 'Add New', 'manage_options', 'add-new', 'my_book_add' );
+  add_submenu_page( 'book-list', '', '', 'manage_options', 'book-edit', 'my_book_edit' );
 }
 add_action( 'admin_menu', 'my_book_plugin_menus' );
 
@@ -56,6 +57,9 @@ function my_book_list(){
 }
 function my_book_add(){
   include_once MY_BOOK_PLUGIN_DIR_PATH.'/views/book-add.php';
+}
+function my_book_edit(){
+  include_once MY_BOOK_PLUGIN_DIR_PATH.'/views/book-edit.php';
 }
 
 
