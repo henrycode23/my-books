@@ -6,7 +6,7 @@
     <div class="panel panel-primary">
       <div class="panel-heading">Update Book</div>
       <div class="panel-body">
-        <form class="form-horizontal" action="javascript:void(0)" id="frmAddBook">
+        <form class="form-horizontal" action="javascript:void(0)" id="frmEditBook">
           <div class="form-group">
             <label class="control-label col-sm-2" for="name">Name:</label>
             <div class="col-sm-10">
