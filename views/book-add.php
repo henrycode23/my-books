@@ -1,3 +1,5 @@
+<?php wp_enqueue_media(); ?>
+
 <div class="container">
   <div class="row">
     <div class="alert alert-info">
@@ -28,7 +30,9 @@
           <div class="form-group"> 
             <label class="control-label col-sm-2" for="book_image">Upload Book Image:</label>
             <div class="col-sm-10">
-              <button type="button" class="btn btn-info">Upload Image</button>
+              <input type="button" id="btn-upload" class="btn btn-info" value="Upload Image">
+              <span id="show-image"></span>
+              <input type="hidden" id="image_name" name="image_name">
             </div>
           </div>
           <div class="form-group"> 

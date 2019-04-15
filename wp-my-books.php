@@ -33,7 +33,7 @@ function my_book_include_assets(){
   // Scripts
   // wp_enqueue_script( 'jquery' );
   wp_enqueue_script( 'bootstrap.min.js', MY_BOOK_PLUGIN_URL."/assets/js/bootstrap.min.js", '', true );
-  wp_enqueue_script( 'validation.min.js', MY_BOOK_PLUGIN_URL."/assets/js/validation.min.js", '', true );
+  wp_enqueue_script( 'validation.min.js', MY_BOOK_PLUGIN_URL."/assets/js/jquery.validate.min.js", '', true );
   wp_enqueue_script( 'jquery.dataTables.min.js', MY_BOOK_PLUGIN_URL."/assets/js/jquery.dataTables.min.js", '', true );
   wp_enqueue_script( 'jQuery.notifyBar.js', MY_BOOK_PLUGIN_URL."/assets/js/jQuery.notifyBar.js", '', true );
   wp_enqueue_script( 'script.js', MY_BOOK_PLUGIN_URL."/assets/js/script.js", '', true );
