@@ -28,7 +28,7 @@ function my_book_include_assets(){
   // Styles
   wp_enqueue_style( 'bootstrap', MY_BOOK_PLUGIN_URL."/assets/css/bootstrap.min.css", '' );
   wp_enqueue_style( 'datatable', MY_BOOK_PLUGIN_URL."/assets/css/jquery.dataTables.min.css", '' );
-  wp_enqueue_style( 'notifybar', MY_BOOK_PLUGIN_URL."/assets/css/jquery.notifyBar.min.css", '' );
+  wp_enqueue_style( 'notifybar', MY_BOOK_PLUGIN_URL."/assets/css/jquery.notifyBar.css", '' );
   wp_enqueue_style( 'style', MY_BOOK_PLUGIN_URL."/assets/css/style.css", '' );
   // Scripts
   // wp_enqueue_script( 'jquery' );
@@ -96,6 +96,25 @@ function drop_table_plugin_books(){
   $wpdb->query("DROP TABLE IF EXISTS " . my_book_table() );
 }
 register_deactivation_hook( __FILE__, 'drop_table_plugin_books' ); // register_uninstall_hook();
+
+
+
+//==================== AJAX Requests Handler for Adding Book ====================
+add_action( 'wp_ajax_mybooklibrary', 'my_book_ajax_handler' );
+function my_book_ajax_handler(){
+  global $wpdb;
+  if( $_REQUEST['param'] == 'save_book' ){
+    $wpdb->insert( my_book_table(), array(
+      'name' => $_REQUEST['name'],
+      'author' => $_REQUEST['author'],
+      'about' => $_REQUEST['about'],
+      'book_image' => $_REQUEST['image_name']
+    ) );
+    echo json_encode( array('status' => 1, 'message' => 'Book created successfully') );
+  }
+  wp_die();
+}
+
 
 
 
