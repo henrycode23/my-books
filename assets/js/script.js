@@ -1,5 +1,7 @@
 jQuery(document).ready(function() {
 
+  
+  //==================== Image Upload Single and Shows to Frontend ====================
   jQuery('#btn-upload').on('click',function(){
     var image = wp.media({
       title: 'Upload image for My Book',
@@ -12,13 +14,32 @@ jQuery(document).ready(function() {
     });
   });
 
+
+
+  //==================== DataTable Use ====================
   jQuery('#my-book').DataTable();
 
+
+
+  //==================== AJAX Requests, Post Data for Adding Book to DB ====================
   jQuery('#frmAddBook').validate({
     submitHandler:function(){
-      console.log(jQuery('#frmAddBook').serialize());
+      var postdata = 'action=mybooklibrary&param=save_book&' + jQuery('#frmAddBook').serialize();
+      jQuery.post(mybookajaxurl, postdata, function(response){
+        var data = jQuery.parseJSON(response);
+        if( data.status == 1 ){
+          jQuery.notifyBar({ 
+            cssClass:'success', 
+            html:data.message 
+          }); 
+        }else{
+
+        }
+      });
     }
   });
+
+
 
   jQuery('#frmEditBook').validate({
     submitHandler:function(){
