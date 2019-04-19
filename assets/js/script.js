@@ -43,7 +43,48 @@ jQuery(document).ready(function() {
 
   jQuery('#frmEditBook').validate({
     submitHandler:function(){
-      console.log(jQuery('#frmEditBook').serialize());
+      var postdata = 'action=mybooklibrary&param=edit_book&' + jQuery('#frmEditBook').serialize();
+      jQuery.post( mybookajaxurl, postdata, function(response){
+        var data = jQuery.parseJSON(response);
+        if( data.status == 1 ){
+          jQuery.notifyBar({
+            cssClass:'success',
+            html:data.message
+          });
+          setTimeout(function(){
+            // window.location.reload();
+            location.reload();
+          },1300)
+        } else{
+          
+        }
+      } );
+    }
+  });
+
+
+
+
+  jQuery(document).on('click', ".btnbookdelete", function(){
+    var conf = confirm('Are you sure you want to delete?');
+    if(conf){
+      var book_id = jQuery(this).attr('data-id');
+      var postdata = 'action=mybooklibrary&param=delete_book&id=' + book_id;
+        jQuery.post( mybookajaxurl, postdata, function(response){
+          var data = jQuery.parseJSON(response);
+          if( data.status == 1 ){
+            jQuery.notifyBar({
+              cssClass:'success',
+              html:data.message
+            });
+            setTimeout(function(){
+              // window.location.reload();
+              location.reload();
+            },1300)
+          } else{
+            
+          }
+        } );
     }
   });
 
