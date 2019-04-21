@@ -1,7 +1,7 @@
 <?php wp_enqueue_media(); ?>
 
-<div class="container">
-  <div class="row">
+<div class="container-fluid">
+    <br>
     <div class="alert alert-info">
       <h4>Book Add Page</h4>
     </div>
@@ -18,7 +18,9 @@
           <div class="form-group">
             <label class="control-label col-sm-2" for="author">Author:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="author" name="author" placeholder="Enter Author" required>
+              <select name="author" id="author" class="form-control">
+                <option value="-1"> -- choose author -- </option>
+              </select>
             </div>
           </div>
           <div class="form-group">
@@ -43,5 +45,4 @@
         </form>
       </div>
     </div>
-  </div>
 </div>
