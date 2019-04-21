@@ -26,7 +26,7 @@ if(!defined('MY_BOOK_PLUGIN_URL'))
 //==================== Assets ====================
 function my_book_include_assets(){
   $slug = '';
-  $page_includes = array( 'book-list', 'add-new', 'add-author', 'remove-author', 'add-student', 'remove-student', 'course-tracker' );
+  $page_includes = array( 'book-list', 'add-new', 'book-edit', 'add-author', 'remove-author', 'add-student', 'remove-student', 'course-tracker' );
   $current_page = $_GET['page'];
   if( in_array( $current_page, $page_includes ) ){
     // Styles
