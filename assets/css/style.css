@@ -1,4 +1,6 @@
-#frmAddBook label.error, #frmEditBook label.error{
+#frmAddBook label.error, 
+#frmEditBook label.error,
+#frmAddAuthor label.error {
 	color: red;
 }
 

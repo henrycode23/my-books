@@ -1,5 +1,23 @@
 jQuery(document).ready(function() {
 
+
+  jQuery('#frmAddAuthor').validate({
+    submitHandler:function(){
+      var postdata = 'action=mybooklibrary&param=save_author&' + jQuery('#frmAddAuthor').serialize();
+      jQuery.post(mybookajaxurl, postdata, function(response){
+        var data = jQuery.parseJSON(response);
+        if( data.status == 1 ){
+          jQuery.notifyBar({ 
+            cssClass:'success', 
+            html:data.message 
+          }); 
+        }else{
+
+        }
+      });
+    }
+  });
+
   
   //==================== Image Upload Single and Shows to Frontend ====================
   jQuery('#btn-upload').on('click',function(){

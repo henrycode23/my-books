@@ -201,6 +201,13 @@ function my_book_ajax_handler(){
         'id' => $_REQUEST['id']
       ) );
     echo json_encode( array('status' => 1, 'message' => 'Book deleted successfully') );
+  } elseif( $_REQUEST['param'] == 'save_author' ){
+    $wpdb->insert( my_authors_table(), array(
+      'name' => $_REQUEST['name'],
+      'fb_link' => $_REQUEST['fb_link'],
+      'about' => $_REQUEST['about']
+    ) );
+    echo json_encode( array('status' => 1, 'message' => 'Book created successfully') );
   }
   wp_die();
 }
