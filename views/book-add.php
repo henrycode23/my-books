@@ -19,7 +19,20 @@
             <label class="control-label col-sm-2" for="author">Author:</label>
             <div class="col-sm-10">
               <select name="author" id="author" class="form-control">
-                <option value="-1"> -- choose author -- </option>
+              <option value="-1"> -- choose author -- </option>
+              <?php
+                global $wpdb;
+                $all_authors = $wpdb->get_results(
+                  $wpdb->prepare(
+                    "SELECT * FROM ".my_authors_table()." ORDER BY id DESC", ""   
+                  )
+                );
+                foreach ($all_authors as $index => $author) {
+                  ?>
+                    <option value="<?php echo $author->id; ?>"><?php echo $author->name; ?></option>
+                  <?php
+                }
+              ?>
               </select>
             </div>
           </div>
