@@ -1,5 +1,12 @@
 <?php
-    global $wpdb;
+  global $wpdb;
+  $all_authors = $wpdb->get_results(
+      $wpdb->prepare(
+        "SELECT * FROM ".my_authors_table()." ORDER BY id DESC", ""
+      ), ARRAY_A
+  );
+
+  // print_r($all_authors);
 ?>
 
 <div class="container-fluid"> 
@@ -22,6 +29,23 @@
                 </tr>
             </thead>
             <tbody>
+              <?php
+                if( count($all_authors) > 0 ){
+                  $serial_number_init = 1;
+                  foreach( $all_authors as $key => $value ){
+              ?>
+              <tr>
+                <td><?php echo $serial_number_init++ ?></td>
+                <td><?php echo $value['name'] ?></td>
+                <td><?php echo $value['fb_link'] ?></td>
+                <td><?php echo $value['about'] ?></td>
+                <td><?php echo $value['created_at'] ?></td>
+                <td><a href="#" class="btn btn-danger">Delete</a></td>
+              </tr>
+              <?php
+                  }
+                }
+              ?>
             </tbody>
         </table>
       </div>
