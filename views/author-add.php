@@ -22,7 +22,7 @@
         <div class="form-group">
           <label class="control-label col-sm-2" for="about">About:</label>
           <div class="col-sm-10">
-            <textarea name="about" id="about" class="form-control" cols="30" rows="10" placeholder="Enter About..."></textarea>
+            <textarea name="about" id="about" class="form-control" cols="30" rows="10" placeholder="Enter About..." required></textarea>
           </div>
         </div>
         <div class="form-group"> 
