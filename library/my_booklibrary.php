@@ -34,4 +34,16 @@ if( $_REQUEST['param'] == 'save_book' ){
     'id' => $_REQUEST['id']
   ) );
 echo json_encode( array('status' => 1, 'message' => 'Author deleted successfully') );
-} 
+} elseif( $_REQUEST['param'] == 'save_student' ){
+  // returns values to user_login_id / wp_users
+  $student_id = $user_id = wp_create_user($_REQUEST['username'], $_REQUEST['password'], $_REQUEST['email']); 
+  $user = new WP_User($student_id);
+  $user->set_role("wp_book_user_key");
+  $wpdb->insert( my_students_table(), array(
+    'name' => $_REQUEST['name'],
+    'email' => $_REQUEST['email'],
+    'user_login_id' => $user_id
+  ) );
+  echo json_encode( array('status' => 1, 'message' => 'Student created successfully') );
+}
+// Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem voluptatibus illum asperiores consectetur eaque similique sint magnam? Eos, doloribus quia repudiandae ea earum eaque, ullam sunt et cupiditate, incidunt odit!

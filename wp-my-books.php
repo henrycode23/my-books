@@ -156,6 +156,9 @@ function my_book_generates_table_script(){
     PRIMARY KEY (`id`)
    ) ENGINE=InnoDB DEFAULT CHARSET=latin1";
   dbDelta( $sql4 );
+
+  // User Role Registration
+  add_role( 'wp_book_user_key', 'My Book User', array( 'read' => true ) );
   
 }
 register_activation_hook( __FILE__, 'my_book_generates_table_script' );

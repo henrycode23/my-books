@@ -1,23 +1,5 @@
 jQuery(document).ready(function() {
 
-
-  jQuery('#frmAddAuthor').validate({
-    submitHandler:function(){
-      var postdata = 'action=mybooklibrary&param=save_author&' + jQuery('#frmAddAuthor').serialize();
-      jQuery.post(mybookajaxurl, postdata, function(response){
-        var data = jQuery.parseJSON(response);
-        if( data.status == 1 ){
-          jQuery.notifyBar({ 
-            cssClass:'success', 
-            html:data.message 
-          }); 
-        }else{
-
-        }
-      });
-    }
-  });
-
   
   //==================== Image Upload Single and Shows to Frontend ====================
   jQuery('#btn-upload').on('click',function(){
@@ -39,7 +21,7 @@ jQuery(document).ready(function() {
 
 
 
-  //==================== AJAX Requests, Post Data for Adding Book to DB ====================
+  //==================== Book AJAX Requests, Post Data to DB ====================
   jQuery('#frmAddBook').validate({
     submitHandler:function(){
       var postdata = 'action=mybooklibrary&param=save_book&' + jQuery('#frmAddBook').serialize();
@@ -82,7 +64,6 @@ jQuery(document).ready(function() {
 
 
 
-
   jQuery(document).on('click', ".btnbookdelete", function(){
     var conf = confirm('Are you sure you want to delete?');
     if(conf){
@@ -105,7 +86,29 @@ jQuery(document).ready(function() {
         } );
     }
   });
+  //==================== End of Book AJAX Requests, Post Data to DB ====================
 
+
+
+
+
+  //==================== Author AJAX Requests, Post Data to DB ====================
+  jQuery('#frmAddAuthor').validate({
+    submitHandler:function(){
+      var postdata = 'action=mybooklibrary&param=save_author&' + jQuery('#frmAddAuthor').serialize();
+      jQuery.post(mybookajaxurl, postdata, function(response){
+        var data = jQuery.parseJSON(response);
+        if( data.status == 1 ){
+          jQuery.notifyBar({ 
+            cssClass:'success', 
+            html:data.message 
+          }); 
+        }else{
+
+        }
+      });
+    }
+  });
 
 
 
@@ -131,6 +134,29 @@ jQuery(document).ready(function() {
         } );
     }
   });
+  //==================== End of Author AJAX Requests, Post Data to DB ====================
 
+
+
+
+
+  //==================== Student AJAX Requests, Post Data to DB ====================
+  jQuery('#frmAddStudent').validate({
+    submitHandler:function(){
+      var postdata = 'action=mybooklibrary&param=save_student&' + jQuery('#frmAddStudent').serialize();
+      jQuery.post(mybookajaxurl, postdata, function(response){
+        var data = jQuery.parseJSON(response);
+        if( data.status == 1 ){
+          jQuery.notifyBar({
+            cssClass:'success',
+            html:data.message
+          });
+        } else{
+
+        }
+      });
+    }
+  });
+  //==================== End of Student AJAX Requests, Post Data to DB ====================
 
 });
