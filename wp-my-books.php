@@ -172,6 +172,11 @@ function drop_table_plugin_books(){
   $wpdb->query("DROP TABLE IF EXISTS " . my_authors_table() );
   $wpdb->query("DROP TABLE IF EXISTS " . my_students_table() );
   $wpdb->query("DROP TABLE IF EXISTS " . my_enroll_table() );
+
+  // check if user_role exists, then remove user_role
+  if( get_role('wp_book_user_key') ){
+    remove_role( 'wp_book_user_key' );
+  }
 }
 register_deactivation_hook( __FILE__, 'drop_table_plugin_books' ); // register_uninstall_hook();
 
