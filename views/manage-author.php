@@ -40,7 +40,7 @@
                 <td><?php echo $value['fb_link'] ?></td>
                 <td><?php echo $value['about'] ?></td>
                 <td><?php echo $value['created_at'] ?></td>
-                <td><a href="#" class="btn btn-danger">Delete</a></td>
+                <td><a href="javascript:void(0)" class="btn btn-danger btnauthordelete" data-id="<?php echo $value['id']; ?>">Delete</a></td>
               </tr>
               <?php
                   }
