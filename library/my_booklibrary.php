@@ -29,4 +29,9 @@ if( $_REQUEST['param'] == 'save_book' ){
     'about' => $_REQUEST['about']
   ) );
   echo json_encode( array('status' => 1, 'message' => 'Author created successfully') );
-}
+} elseif( $_REQUEST['param'] == 'delete_author' ){
+  $wpdb->delete( my_authors_table(), array(
+    'id' => $_REQUEST['id']
+  ) );
+echo json_encode( array('status' => 1, 'message' => 'Author deleted successfully') );
+} 
