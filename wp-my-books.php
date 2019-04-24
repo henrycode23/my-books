@@ -191,6 +191,12 @@ function drop_table_plugin_books(){
   if( get_role('wp_book_user_key') ){
     remove_role( 'wp_book_user_key' );
   }
+
+  // Delete wp_posts & wp_options
+  if( !empty( get_option( 'my_book_page_id' ) ) ){
+    wp_delete_post( get_option( 'my_book_page_id' ), true );
+    delete_option( 'my_book_page_id' );
+  }
 }
 register_deactivation_hook( __FILE__, 'drop_table_plugin_books' ); // register_uninstall_hook();
 
