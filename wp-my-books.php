@@ -95,7 +95,7 @@ function my_book_edit(){
 
 
 
-//==================== Auto Generate Table ====================
+//==================== Activation: Auto Generate Table ====================
 function my_book_table(){
   global $wpdb;
   return $wpdb->prefix.'my_books';  // wp_my_books
@@ -159,13 +159,27 @@ function my_book_generates_table_script(){
 
   // User Role Registration
   add_role( 'wp_book_user_key', 'My Book User', array( 'read' => true ) );
+
+  // Dynamic page creation - Listing of created books
+  // Create post object - wp_posts: ID = option_value
+  $my_post = array(
+    'post_title'    => 'Book Page', // title
+    'post_content'  => '[book_page]', // shortcode
+    'post_status'   => 'publish',
+    'post_type'     => 'page',
+    'post_name'     => 'my_book' // slug
+  );
+  
+  // Insert the post into the database - wp_options: option_name, option_value = ID
+  $book_id = wp_insert_post( $my_post );
+  add_option( 'my_book_page_id', $book_id );
   
 }
 register_activation_hook( __FILE__, 'my_book_generates_table_script' );
 
 
 
-//==================== Auto Drop Table ====================
+//==================== Deactivation: Auto Drop Table ====================
 function drop_table_plugin_books(){
   global $wpdb;
   $wpdb->query("DROP TABLE IF EXISTS " . my_book_table() );
