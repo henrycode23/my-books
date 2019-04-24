@@ -179,6 +179,13 @@ register_activation_hook( __FILE__, 'my_book_generates_table_script' );
 
 
 
+// ==================== Shortcode: for book_page ====================
+function my_book_page_functions(){
+  echo "THis is my book page content";
+}
+add_shortcode( 'book_page', 'my_book_page_functions' );
+
+
 //==================== Deactivation: Auto Drop Table ====================
 function drop_table_plugin_books(){
   global $wpdb;
