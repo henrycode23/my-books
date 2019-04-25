@@ -26,8 +26,18 @@ if(!defined('MY_BOOK_PLUGIN_URL'))
 //==================== Assets ====================
 function my_book_include_assets(){
   $slug = '';
-  $page_includes = array( 'book-list', 'add-new', 'book-edit', 'add-author', 'remove-author', 'add-student', 'remove-student', 'course-tracker' );
+  $page_includes = array( 
+    'book-list', 'add-new', 'book-edit', 'add-author', 'remove-author', 
+    'add-student', 'remove-student', 'course-tracker', 'frontendpage' );
   $current_page = $_GET['page'];
+  if( empty($current_page) ){
+    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    // echo $actual_link; die;
+    if( preg_match( '/my_book/', $actual_link ) ){
+      $current_page = 'frontendpage'; // must be equal to $page_includes slug value
+    }
+  }
+
   if( in_array( $current_page, $page_includes ) ){
     // Styles
     wp_enqueue_style( 'bootstrap', MY_BOOK_PLUGIN_URL."/assets/css/bootstrap.css", '' );
@@ -181,7 +191,7 @@ register_activation_hook( __FILE__, 'my_book_generates_table_script' );
 
 // ==================== Shortcode: for book_page ====================
 function my_book_page_functions(){
-  echo "THis is my book page content";
+  include_once MY_BOOK_PLUGIN_DIR_PATH.'/views/my_books_frontend_lists.php';
 }
 add_shortcode( 'book_page', 'my_book_page_functions' );
 
@@ -215,6 +225,19 @@ function my_book_ajax_handler(){
   global $wpdb;
   include_once MY_BOOK_PLUGIN_DIR_PATH.'/library/my_booklibrary.php';
   wp_die();
+}
+
+
+
+//==================== Template Layouts ====================
+add_filter( 'page_template', 'owt_custom_page_layout' );
+function owt_custom_page_layout($page_template){
+  global $post;
+  $page_slug = $post->post_name; // book page slug
+  if( $page_slug == 'my_book' ){
+    include_once MY_BOOK_PLUGIN_DIR_PATH.'/views/frontend-books-template.php';
+  }
+  return $page_template;
 }
 
 
