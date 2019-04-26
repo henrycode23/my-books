@@ -242,5 +242,17 @@ function owt_custom_page_layout($page_template){
 
 
 
+//==================== Getting Details from Another Table using linked IDs ====================
+function get_author_details($author_id){
+  global $wpdb;
+  $author_details = $wpdb->get_row(
+      $wpdb->prepare(
+        "SELECT * FROM ".my_authors_table()." WHERE id = %d", $author_id
+      ), ARRAY_A
+  );
+  return $author_details;
+}
+
+
 
 ?>
