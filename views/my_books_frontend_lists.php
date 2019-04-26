@@ -14,7 +14,7 @@
       <div class="col-sm-4 owt-layout">
         <p><img src="<?php echo $value->book_image; ?>" style="height:100px;width:100px;"></p>
         <p><?php echo $value->name; ?></p>
-        <p><?php echo $value->author; ?></p>
+        <p><?php echo get_author_details($value->author)['name']; ?></p>
         <p><button class="btn btn-success">Enroll Now</button></p>
       </div>
       <?php
