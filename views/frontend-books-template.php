@@ -5,7 +5,7 @@ Template Name: Frontend book page layout
 get_header(); // header.php of theme
 ?>
 
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col-sm-12">
       <div class="alert alert-success">
