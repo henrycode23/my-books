@@ -255,4 +255,25 @@ function get_author_details($author_id){
 
 
 
+//==================== User Role Filter ====================
+function owt_login_user_role_filter($redirect_to, $request, $user){
+  global $user;
+  if( isset($user->roles) && is_array($user->roles) ){
+    if( in_array('wp_book_user_key', $user->roles) ){
+      return $redirect_to = site_url().'/my_book';
+    } else{
+      return $redirect_to;
+    }
+  }
+}
+add_filter( 'login_redirect', 'owt_login_user_role_filter',10,3 );
+
+function owt_logout_user_role_filter(){
+  wp_redirect(site_url().'/my_book');
+  exit();
+}
+add_filter( 'wp_logout', 'owt_logout_user_role_filter' );
+
+
+
 ?>
