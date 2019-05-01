@@ -1,5 +1,10 @@
 jQuery(document).ready(function() {
 
+  //ENroll Code
+  jQuery(document).on('click', '.owt-enroll-btn', function(){
+    console.log('Enrolled Successfully');
+  });
+
   
   //==================== Image Upload Single and Shows to Frontend ====================
   jQuery('#btn-upload').on('click',function(){
